@@ -1,20 +1,16 @@
-function solution(s){
-    var answer = true;
+function solution(s) {
+    // 1. 스택으로 사용할 배열 (이름을 stack으로 바꾸면 더 명확합니다)
+    let stack = [];
 
-    let arr = [];
-    for(let i = 0; i < s.length; i++) { 
-        if(s[i] === '(') {
-            arr.push('(')
-        } else if(s[i] === ')') {
-            const popc = arr.pop();
-            if(popc === undefined) return false
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === '(') {
+            stack.push('(');
+        } else if (s[i] === ')') {
+            if (stack.length === 0) {
+                return false;
+            }
+            stack.pop();
         }
     }
-    
-    if(arr.length === 0) {
-        return true
-    } else {
-        return false
-    }
-    
+    return stack.length === 0;
 }
