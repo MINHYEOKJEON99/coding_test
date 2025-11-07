@@ -1,7 +1,3 @@
 function solution(n) {
-    let answer = []
-    for(const i of String(n)) {
-        answer = [+i, ...answer]
-    }
-    return answer
+    return [...String(n)].map((c) => +c).reverse()
 }
